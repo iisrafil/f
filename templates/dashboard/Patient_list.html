@@ -1,0 +1,78 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <h3 class="text-dark mb-4">Oldage Homes</h3>
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Eldercare Info</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 text-nowrap">
+
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Oldage Home</th>
+                        <th>Guardian nid</th>
+                        <th>Guardians Phone</th>
+                        <th>Address</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for patient in patients %}
+                    <tr>
+                        <td><img class="rounded-circle me-2" width="30" height="30"
+                                 src="{{ patient.photo.url }}">{{ patient.name }}
+                        </td>
+                        <td>{{ patient.oldagehome.name }}</td>
+                        <td>{{ patient.guardian_nid }}</td>
+                        <td>{{ patient.guardian_phone_number }}</td>
+                        <td>{{ patient.address }}</td>
+
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td><strong>Name</strong></td>
+                        <td><strong>Oldage Home</strong></td>
+                        <td><strong>Guardian nid</strong></td>
+                        <td><strong>Guardians Phone</strong></td>
+                        <td><strong>Address</strong></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-md-6 align-self-center">
+                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of
+                        27</p>
+                </div>
+                <div class="col-md-6">
+                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                        <ul class="pagination">
+                            <li class="page-item disabled"><a class="page-link" aria-label="Previous" href="#"><span
+                                    aria-hidden="true">«</span></a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" aria-label="Next" href="#"><span
+                                    aria-hidden="true">»</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
